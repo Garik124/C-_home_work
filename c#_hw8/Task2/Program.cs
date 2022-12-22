@@ -44,52 +44,49 @@ void PrintArray(int[,] inArray)
     }
 }
 
-// int[] CounterOfNumbers(int[,] array)
+// int[] FindNumber(int[,] Array)
 // {
-//     int[] arr = new int[array.GetLength(0)];
-//   for (int i = 0; i < array.GetLength(0); i++)
-//   {
-//     for (int j = 0; j < array.GetLength(1); j++)
+//     int[] arr = new int[Array.GetLength(0)];
+//     for (int m = 0; m < Array.GetLength(0); m++)
 //     {
-//       for (int k = 0; k < array.GetLength(1) - 1; k++)
-//       {
-//         if (array[i, k] < array[i, k + 1])
+//         for (int i = 0; i < Array.GetLength(0); i++)
 //         {
-//           int sum = 0;
-//           sum = sum +
-//           array[i, k + 1] = array[i, k];
-//           array[i, k] = temp;
+//             for (int j = 0; j < Array.GetLength(1); j++)
+//             {
+//                 int sum = 0;
+//                 arr[m] = sum + Array[i, j];
+//             }
 //         }
-//       }
 //     }
-//   }
+//     return arr;
 // }
 
 int SumLineElements(int[,] array, int i)
 {
-  int sumLine = array[i,0];
-  for (int j = 1; j < array.GetLength(1); j++)
-  {
-    sumLine += array[i,j];
-  }
-  return sumLine;
+    int sumLine = array[i, 0];
+    for (int j = 1; j < array.GetLength(1); j++)
+    {
+        sumLine += array[i, j];
+    }
+    return sumLine;
 }
-
 
 int rows = GetNumber("Введите количество строк: ");
 int cols = GetNumber("Введите количество столбцов: ");
 int[,] array = GetArray(rows, cols, 0, 10);
 PrintArray(array);
+// int[] massive = FindNumber(array);
+// WriteLine(String.Join(", ", massive));
 int minSumLine = 0;
 int sumLine = SumLineElements(array, 0);
 for (int i = 1; i < array.GetLength(0); i++)
 {
-  int tempSumLine = SumLineElements(array, i);
-  if (sumLine > tempSumLine)
-  {
-    sumLine = tempSumLine;
-    minSumLine = i;
-  }
+    int tempSumLine = SumLineElements(array, i);
+    if (sumLine > tempSumLine)
+    {
+        sumLine = tempSumLine;
+        minSumLine = i;
+    }
 }
-Console.WriteLine($"\n{minSumLine+1} - строкa с наименьшей суммой ({sumLine}) элементов ");
+Console.WriteLine($"\n{minSumLine + 1} - строкa с наименьшей суммой ({sumLine}) элементов ");
 
